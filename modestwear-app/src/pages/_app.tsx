@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from '@/store/store';
-import { Toaster } from '@/components/commons/sonner';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import { Toaster } from '@/components/common/sonner';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 import HomePage from '@/pages/HomePage';
 import CategoryPage from '@/pages/CategoryPage';
 import ProductDetailPage from '@/pages/ProductDetailPage';

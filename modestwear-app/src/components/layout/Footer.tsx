@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Facebook, Instagram, Twitter, Mail } from 'lucide-react';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
 import { Search, ShoppingCart, Heart, User, Menu, X, Sparkles } from 'lucide-react';
@@ -11,7 +12,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/common/sheet';
 export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const navigate = useNavigate();
+  const route = useRouter();
   
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const wishlistItems = useSelector((state: RootState) => state.wishlist.items);
@@ -23,7 +24,7 @@ export default function Header() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      navigate(`/category/all?search=${searchQuery}`);
+      route(`/category/all?search=${searchQuery}`);
       setIsSearchOpen(false);
       setSearchQuery('');
     }
