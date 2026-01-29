@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'next/link';
+import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { Heart, ShoppingCart, Eye } from 'lucide-react';
 import { Product } from '@/interfaces/interface';
@@ -114,10 +114,10 @@ export default function ProductCard({ product }: ProductCardProps) {
 
           {/* Price */}
           <div className="flex items-center gap-2">
-            <span className="text-lg text-accent"><ZAR>{product.price.toFixed(2)}</ZAR></span>
+            <span className="text-lg text-accent">R{product.price.toFixed(2)}</span>
             {product.originalPrice && (
               <span className="text-sm text-muted-foreground line-through">
-                <ZAR>{product.originalPrice.toFixed(2)}</ZAR>
+                R{product.originalPrice.toFixed(2)}
               </span>
             )}
           </div>
