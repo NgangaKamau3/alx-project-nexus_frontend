@@ -28,7 +28,7 @@ export default function LoginPage() {
     // [API: POST /auth/login]
     // Simulate API call
     setTimeout(() => {
-      const kUser = {
+      const User = {
         id: '1',
         name: 'Sarah Ahmed',
         email: email,
@@ -36,7 +36,7 @@ export default function LoginPage() {
       dispatch(setUser(User));
       toast.success('Login successful!');
       setIsLoading(false);
-      navigate('/account');
+      router.push('/account');
     }, 1000);
   };
 
@@ -94,7 +94,7 @@ export default function LoginPage() {
 
           <div className="mt-6 text-center text-sm">
             <span className="text-muted-foreground">Don't have an account? </span>
-            <Link to="/register" className="text-accent hover:underline">
+            <Link href="/register" className="text-accent hover:underline">
               Sign up
             </Link>
           </div>

@@ -53,7 +53,7 @@ export default function RegisterPage() {
       dispatch(setUser(newUser));
       toast.success('Account created successfully!');
       setIsLoading(false);
-      navigate('/account');
+      router.push('/account');
     }, 1000);
   };
 
@@ -165,7 +165,7 @@ export default function RegisterPage() {
 
           <div className="mt-6 text-center text-sm">
             <span className="text-muted-foreground">Already have an account? </span>
-            <Link to="/login" className="text-accent hover:underline">
+            <Link href="/login" className="text-accent hover:underline">
               Sign in
             </Link>
           </div>

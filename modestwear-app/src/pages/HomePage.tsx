@@ -33,13 +33,13 @@ export default function HomePage() {
               Quality, comfort, and style in every piece.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link to="/category/all">
+              <Link href="/category/all">
                 <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
                   Shop Now
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Link to="/category/sale">
+              <Link href="/category/sale">
                 <Button
                   size="lg"
                   variant="outline"
@@ -97,7 +97,7 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {categories.slice(1, 5).map((category) => (
-              <Link key={category.id} to={`/category/${category.id}`}>
+              <Link key={category.id} href={`/category/${category.id}`}>
                 <Card className="group overflow-hidden hover:shadow-lg transition-all duration-300">
                   <div className="aspect-square overflow-hidden bg-muted">
                     <img
@@ -130,7 +130,7 @@ export default function HomePage() {
             ))}
           </div>
           <div className="text-center mt-12">
-            <Link to="/category/all">
+            <Link href="/category/all">
               <Button size="lg" variant="outline">
                 View All Products
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -163,7 +163,7 @@ export default function HomePage() {
       <section className="py-16 bg-gradient-to-r from-accent/20 to-accent/5">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Link to="/outfit-builder">
+            <Link href="/outfit-builder">
               <Card className="group overflow-hidden hover:shadow-lg transition-all duration-300 h-full">
                 <CardContent className="p-8 flex flex-col justify-center h-full">
                   <Sparkles className="h-12 w-12 text-accent mb-4" />
@@ -179,7 +179,7 @@ export default function HomePage() {
                 </CardContent>
               </Card>
             </Link>
-            <Link to="/virtual-try-on">
+            <Link href="/virtual-try-on">
               <Card className="group overflow-hidden hover:shadow-lg transition-all duration-300 h-full">
                 <CardContent className="p-8 flex flex-col justify-center h-full">
                   <Sparkles className="h-12 w-12 text-accent mb-4" />
@@ -213,7 +213,7 @@ export default function HomePage() {
               ))}
             </div>
             <div className="text-center mt-12">
-              <Link to="/category/sale">
+              <Link href="/category/sale">
                 <Button size="lg" className="bg-destructive hover:bg-destructive/90">
                   Shop All Sale Items
                   <ArrowRight className="ml-2 h-5 w-5" />

@@ -51,13 +51,13 @@ export default function CheckoutPage() {
     // [API: POST /payments]
     
     // Simulate processing
-    toast.loading('Processing your order...');
-    
+    const toastId = toast.loading("Processing your order...");
+
     setTimeout(() => {
-      toast.dismiss();
-      toast.success('Order placed successfully!');
+      toast.dismiss(toastId);
+      toast.success("Order placed successfully!");
       dispatch(clearCart());
-      navigate('/account');
+      router.push('/account');
     }, 2000);
   };
 
@@ -70,7 +70,7 @@ export default function CheckoutPage() {
       <div className="container mx-auto px-4 py-16 text-center">
         <Package className="mx-auto h-16 w-16 text-muted-foreground mb-4" />
         <h2 className="mb-4">Your cart is empty</h2>
-        <Button onClick={() => navigate('/category/all')}>Continue Shopping</Button>
+        <Button onClick={() => router.push('/category/all')}>Continue Shopping</Button>
       </div>
     );
   }

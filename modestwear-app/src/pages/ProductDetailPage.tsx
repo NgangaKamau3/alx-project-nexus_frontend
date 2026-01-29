@@ -35,7 +35,7 @@ export default function ProductDetailPage() {
     return (
       <div className="container mx-auto px-4 py-16 text-center">
         <h2 className="text-2xl mb-4">Product not found</h2>
-        <Button onClick={() => navigate('/')}>Return to Home</Button>
+        <Button onClick={() => router.push('/')}>Return to Home</Button>
       </div>
     );
   }
@@ -81,11 +81,11 @@ export default function ProductDetailPage() {
       <div className="border-b border-border">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Link to="/" className="hover:text-accent">
+            <Link href="/" className="hover:text-accent">
               Home
             </Link>
             <span>/</span>
-            <Link to={`/category/${product.category}`} className="hover:text-accent capitalize">
+            <Link href={`/category/${product.category}`} className="hover:text-accent capitalize">
               {product.category}
             </Link>
             <span>/</span>
@@ -99,7 +99,7 @@ export default function ProductDetailPage() {
         <Button
           variant="ghost"
           className="mb-6"
-          onClick={() => navigate(-1)}
+          onClick={() => router.back(-1)}
         >
           <ChevronLeft className="h-4 w-4 mr-2" />
           Back
@@ -173,7 +173,7 @@ export default function ProductDetailPage() {
 
             {/* Price */}
             <div className="flex items-center gap-3 mb-6">
-              <span className="text-3xl text-accent">${product.price.toFixed(2)}</span>
+              <span className="text-3xl text-accent">R{product.price.toFixed(2)}</span>
               {product.originalPrice && (
                 <span className="text-xl text-muted-foreground line-through">
                   R{product.originalPrice.toFixed(2)}

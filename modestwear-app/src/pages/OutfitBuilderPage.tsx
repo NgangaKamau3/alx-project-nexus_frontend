@@ -50,7 +50,7 @@ function DraggableProduct({ product }: DraggableProductProps) {
         </div>
         <CardContent className="p-2">
           <p className="text-xs line-clamp-1">{product.name}</p>
-          <p className="text-xs text-accent">${product.price}</p>
+          <p className="text-xs text-accent">R{product.price}</p>
         </CardContent>
       </Card>
     </div>
@@ -105,7 +105,7 @@ export default function OutfitBuilderPage() {
   const dispatch = useDispatch();
   const currentOutfit = useSelector((state: RootState) => state.outfitBuilder.currentOutfit);
   const savedOutfits = useSelector((state: RootState) => state.outfitBuilder.savedOutfits);
-  const canvasRef = useRef<HTMLDivElement>(null);
+  const dropRef = useRef<HTMLDivElement>(null);
 
   const [outfitName, setOutfitName] = useState('');
   const [saveDialogOpen, setSaveDialogOpen] = useState(false);
@@ -119,10 +119,10 @@ export default function OutfitBuilderPage() {
   const [{ isOver }, drop] = useDrop({
     accept: [ItemTypes.PRODUCT, ItemTypes.OUTFIT_ITEM],
     drop: (item: any, monitor) => {
-      if (!canvasRef.current) return;
+      if (!dropRef.current) return;
 
       const offset = monitor.getClientOffset();
-      const canvasRect = canvasRef.current.getBoundingClientRect();
+      const canvasRect = dropRef.current.getBoundingClientRect();
 
       if (offset) {
         const x = ((offset.x - canvasRect.left) / canvasRect.width) * 100;
@@ -326,11 +326,9 @@ export default function OutfitBuilderPage() {
 
                   {/* Canvas Area */}
                   <div
-                    ref={(node) => {
-                      drop(node);
-                      if (node) {
-                        (canvasRef as any).current = node;
-                      }
+                   ref={(node) => {
+                   drop(node);
+                   dropRef.current = node;
                     }}
                     className={`relative w-full aspect-[3/4] rounded-lg border-2 border-dashed ${
                       isOver ? 'border-accent bg-accent/5' : 'border-border'
