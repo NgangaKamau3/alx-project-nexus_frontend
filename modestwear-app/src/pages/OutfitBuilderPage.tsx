@@ -14,6 +14,7 @@ import { Label } from '@/components/ui/label';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter, } from '@/components/ui/dialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from '@/app/components/ui/resizable';
 import { Sparkles, Trash2, Save, FolderOpen, Download, Plus } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -367,6 +368,193 @@ export default function OutfitBuilderPage() {
                   </div>
                 </CardContent>
               </Card>
+            </div>
+          </div>
+          {/* Desktop: Resizable Layout */}
+            <div className="hidden lg:block">
+              <ResizablePanelGroup direction="horizontal" className="rounded-lg border">
+                {/* Left Panel - Product Library */}
+                <ResizablePanel defaultSize="25%" minSize="20%" maxSize="40%" direction="horizontal">
+                  <Card className="h-full border-0 rounded-none">
+                    <CardContent className="p-4 h-full flex flex-col">
+                      <h3 className="mb-4">Product Library</h3>
+
+                      {/* Category Filter */}
+                      <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="mb-4">
+                        <TabsList className="w-full grid grid-cols-2">
+                          <TabsTrigger value="all">All</TabsTrigger>
+                          <TabsTrigger value="dresses">Dresses</TabsTrigger>
+                        </TabsList>
+                      </Tabs>
+
+                      <ScrollArea className="flex-1">
+                        <div className="grid grid-cols-2 gap-3 pr-4">
+                          {productsByCategory.slice(0, 20).map((product) => (
+                            <DraggableProduct key={product.id} product={product} />
+                          ))}
+                        </div>
+                      </ScrollArea>
+                    </CardContent>
+                  </Card>
+                </ResizablePanel>
+
+                {/* Resize Handle */}
+                <ResizableHandle withHandle direction="horizontal" />
+
+                {/* Right Panel - Canvas */}
+                <ResizablePanel defaultSize="75%" minSize="60%" maxSize="80%" direction="horizontal">
+                  <Card className="h-full border-0 rounded-none">
+                    <CardContent className="p-6 h-full flex flex-col">
+                      {/* Toolbar */}
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        <Dialog open={saveDialogOpen} onOpenChange={setSaveDialogOpen}>
+                          <DialogTrigger asChild>
+                            <Button disabled={currentOutfit.length === 0}>
+                              <Save className="h-4 w-4 mr-2" />
+                              Save Outfit
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent>
+                            <DialogHeader>
+                              <DialogTitle>Save Outfit</DialogTitle>
+                            </DialogHeader>
+                            <div className="py-4">
+                              <Label htmlFor="outfit-name" className="mb-2 block">
+                                Outfit Name
+                              </Label>
+                              <Input
+                                id="outfit-name"
+                                value={outfitName}
+                                onChange={(e) => setOutfitName(e.target.value)}
+                                placeholder="e.g., Summer Casual"
+                              />
+                            </div>
+                            <DialogFooter>
+                              <Button onClick={handleSaveOutfit}>Save</Button>
+                            </DialogFooter>
+                          </DialogContent>
+                        </Dialog>
+
+                        <Dialog open={loadDialogOpen} onOpenChange={setLoadDialogOpen}>
+                          <DialogTrigger asChild>
+                            <Button variant="outline">
+                              <FolderOpen className="h-4 w-4 mr-2" />
+                              Load Outfit
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent>
+                            <DialogHeader>
+                              <DialogTitle>Saved Outfits</DialogTitle>
+                            </DialogHeader>
+                            <ScrollArea className="h-[400px] py-4">
+                              {savedOutfits.length > 0 ? (
+                                <div className="space-y-2">
+                                  {savedOutfits.map((outfit) => (
+                                    <Card key={outfit.id}>
+                                      <CardContent className="p-4 flex items-center justify-between">
+                                        <div>
+                                          <h4 className="mb-1">{outfit.name}</h4>
+                                          <p className="text-sm text-muted-foreground">
+                                            {new Date(outfit.createdAt).toLocaleDateString()} •{' '}
+                                            {outfit.items.length} items
+                                          </p>
+                                        </div>
+                                        <div className="flex gap-2">
+                                          <Button
+                                            size="sm"
+                                            onClick={() => handleLoadOutfit(outfit.id)}
+                                          >
+                                            Load
+                                          </Button>
+                                          <Button
+                                            size="sm"
+                                            variant="destructive"
+                                            onClick={() => handleDeleteOutfit(outfit.id)}
+                                          >
+                                            <Trash2 className="h-3 w-3" />
+                                          </Button>
+                                        </div>
+                                      </CardContent>
+                                    </Card>
+                                  ))}
+                                </div>
+                              ) : (
+                                <p className="text-muted-foreground text-center py-8">
+                                  No saved outfits yet
+                                </p>
+                              )}
+                            </ScrollArea>
+                          </DialogContent>
+                        </Dialog>
+
+                        <Button
+                          variant="outline"
+                          onClick={handleClearCanvas}
+                          disabled={currentOutfit.length === 0}
+                        >
+                          <Trash2 className="h-4 w-4 mr-2" />
+                          Clear Canvas
+                        </Button>
+
+                        <Button
+                          variant="outline"
+                          disabled={currentOutfit.length === 0}
+                        >
+                          <Download className="h-4 w-4 mr-2" />
+                          Export Image
+                        </Button>
+                      </div>
+
+                      {/* Canvas Area */}
+                      <div className="flex-1 flex items-center justify-center">
+                        <div
+                          ref={(node) => {
+                            drop(node);
+                            if (node) {
+                              (canvasRef as any).current = node;
+                            }
+                          }}
+                          className={`relative w-full max-w-2xl aspect-[3/4] rounded-lg border-2 border-dashed ${
+                            isOver ? 'border-accent bg-accent/5' : 'border-border'
+                          } transition-colors`}
+                          style={{
+                            backgroundImage: 'url(https://images.unsplash.com/photo-1618220179428-22790b461013?w=800)',
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                          }}
+                        >
+                          {currentOutfit.length === 0 && !isOver && (
+                            <div className="absolute inset-0 flex flex-col items-center justify-center text-muted-foreground">
+                              <Plus className="h-16 w-16 mb-4 opacity-50" />
+                              <p className="text-lg">Drag items here to start building your outfit</p>
+                            </div>
+                          )}
+
+                          {currentOutfit.map((item) => (
+                            <OutfitItem
+                              key={item.product.id}
+                              item={item}
+                              onRemove={() => dispatch(removeItemFromOutfit(item.product.id))}
+                            />
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Instructions */}
+                      <div className="mt-6 p-4 bg-muted rounded-lg">
+                        <h4 className="mb-2">How to use:</h4>
+                        <ul className="text-sm text-muted-foreground space-y-1">
+                          <li>• Drag products from the library onto the canvas</li>
+                          <li>• Move items around by dragging them on the canvas</li>
+                          <li>• Remove items by clicking the trash icon</li>
+                          <li>• Save your favorite outfits to load them later</li>
+                          <li>• <strong>Drag the divider</strong> to resize the panels</li>
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </ResizablePanel>
+              </ResizablePanelGroup>
             </div>
           </div>
         </div>

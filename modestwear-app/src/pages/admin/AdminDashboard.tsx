@@ -1,18 +1,10 @@
-import { Card, CardContent } from '@components/commons/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/commons/tabs';
+import { Card, CardContent } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/commons/label';
+import { Label } from '@/components/ui/label';
 import { Products, Orders } from '@/data/data';
-import {
-  Package,
-  ShoppingBag,
-  Users,
-  TrendingUp,
-  Eye,
-  Edit,
-  Trash2,
-} from 'lucide-react';
+import { Package, ShoppingBag, Users, TrendingUp, Eye, Edit, Trash2,} from 'lucide-react';
 
 // [API: GET /admin/stats] - Get dashboard statistics
 // [API: GET /admin/products] - Get all products
@@ -23,6 +15,47 @@ export default function AdminDashboard() {
   const totalRevenue = Orders.reduce((sum, order) => sum + order.total, 0);
   const totalOrders = Orders.length;
   const totalProducts = Products.length;
+
+  const revenueChartData = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    datasets: [
+      {
+        label: 'Revenue',
+        data: [12000, 19000, 15000, 25000, 22000, 30000],
+        borderColor: '#C9A24D',
+        backgroundColor: 'rgba(201, 162, 77, 0.1)',
+        tension: 0.4,
+      },
+    ],
+  };
+
+  const categoryChartData = {
+    labels: ['Dresses', 'Abayas', 'Tops', 'Bottoms', 'Accessories'],
+    datasets: [
+      {
+        label: 'Sales by Category',
+        data: [45, 30, 20, 15, 10],
+        backgroundColor: [
+          '#C9A24D',
+          '#E63946',
+          '#111827',
+          '#F5EFE7',
+          '#6B7280',
+        ],
+      },
+    ],
+  };
+
+  const ordersChartData = {
+    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    datasets: [
+      {
+        label: 'Orders',
+        data: [12, 19, 15, 25, 22, 30, 28],
+        backgroundColor: '#C9A24D',
+      },
+    ],
+  };
 
   const stats = [
   {
@@ -128,7 +161,7 @@ export default function AdminDashboard() {
                             </div>
                           </td>
                           <td className="py-3 px-2 capitalize">{product.category}</td>
-                          <td className="py-3 px-2">${product.price}</td>
+                          <td className="py-3 px-2">R{product.price}</td>
                           <td className="py-3 px-2">
                             {product.inStock ? (
                               <span className="text-green-600">In Stock</span>
@@ -174,7 +207,7 @@ export default function AdminDashboard() {
                       </div>
                       <div className="flex items-center gap-4">
                         <span className="capitalize">{order.status}</span>
-                        <span className="font-semibold">${order.total.toFixed(2)}</span>
+                        <span className="font-semibold">R{order.total.toFixed(2)}</span>
                         <Button variant="outline" size="sm">
                           View
                         </Button>
@@ -184,6 +217,115 @@ export default function AdminDashboard() {
                 </div>
               </CardContent>
             </Card>
+          </TabsContent>
+
+          {/* Analytics Tab */}
+          <TabsContent value="analytics" className="mt-6">
+            <div className="space-y-6">
+              <h3 className="mb-4">Analytics Dashboard (Drag corners to resize charts)</h3>
+
+              {/* Revenue Chart */}
+              <div>
+                <h4 className="mb-4">Revenue Trend</h4>
+                <ResizableBox
+                  defaultWidth="100%"
+                  defaultHeight={400}
+                  minWidth="100%"
+                  minHeight={300}
+                  maxHeight={600}
+                  enable={{
+                    top: false,
+                    right: false,
+                    bottom: true,
+                    left: false,
+                    topRight: false,
+                    bottomRight: false,
+                    bottomLeft: false,
+                    topLeft: false,
+                  }}
+                >
+                  <Card className="h-full">
+                    <CardContent className="p-6 h-full">
+                      <ChartContainer config={{}} className="h-full">
+                        <LineChart data={revenueChartData} />
+                      </ChartContainer>
+                    </CardContent>
+                  </Card>
+                </ResizableBox>
+              </div>
+
+              {/* Orders and Category Charts Side by Side */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* Orders Chart */}
+                <div>
+                  <h4 className="mb-4">Weekly Orders</h4>
+                  <ResizableBox
+                    defaultWidth="100%"
+                    defaultHeight={350}
+                    minWidth="100%"
+                    minHeight={250}
+                    maxHeight={500}
+                    enable={{
+                      top: false,
+                      right: false,
+                      bottom: true,
+                      left: false,
+                      topRight: false,
+                      bottomRight: false,
+                      bottomLeft: false,
+                      topLeft: false,
+                    }}
+                  >
+                    <Card className="h-full">
+                      <CardContent className="p-6 h-full">
+                        <ChartContainer config={{}} className="h-full">
+                          <BarChart data={ordersChartData} />
+                        </ChartContainer>
+                      </CardContent>
+                    </Card>
+                  </ResizableBox>
+                </div>
+
+                {/* Category Chart */}
+                <div>
+                  <h4 className="mb-4">Sales by Category</h4>
+                  <ResizableBox
+                    defaultWidth="100%"
+                    defaultHeight={350}
+                    minWidth="100%"
+                    minHeight={250}
+                    maxHeight={500}
+                    enable={{
+                      top: false,
+                      right: false,
+                      bottom: true,
+                      left: false,
+                      topRight: false,
+                      bottomRight: false,
+                      bottomLeft: false,
+                      topLeft: false,
+                    }}
+                  >
+                    <Card className="h-full">
+                      <CardContent className="p-6 h-full">
+                        <ChartContainer config={{}} className="h-full">
+                          <DoughnutChart data={categoryChartData} />
+                        </ChartContainer>
+                      </CardContent>
+                    </Card>
+                  </ResizableBox>
+                </div>
+              </div>
+
+              {/* Info Box */}
+              <Card className="bg-accent/10 border-accent/20">
+                <CardContent className="p-6">
+                  <p className="text-sm">
+                    <strong>Note:</strong> These are mock analytics for demonstration. Integrate with [API: GET /admin/analytics] to display real-time data. All charts are resizable - drag the bottom edge to adjust height.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
 
           {/* Customers Tab */}

@@ -8,12 +8,8 @@ import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import {
-  Sparkles,
-  Upload,
-  Download,
-  RefreshCcw,
-} from "lucide-react";
+import { ResizableBox } from '@/app/components/ui/resizable';
+import { Sparkles, Upload, Download, RefreshCcw, } from "lucide-react";
 import { toast } from "sonner";
 import html2canvas from "html2canvas";
 
@@ -83,6 +79,8 @@ export default function VirtualTryOnPage() {
     );
     toast.success("Demo model loaded");
   };
+
+  
 
   // Export final composition
   const handleExport = async () => {
@@ -281,6 +279,68 @@ export default function VirtualTryOnPage() {
                   </div>
                 </div>
 
+                {/* Preview with Product - Resizable */}
+                  <div>
+                    <h3 className="mb-4">Preview (Drag bottom-right corner to resize)</h3>
+                    <ResizableBox
+                      defaultWidth="100%"
+                      defaultHeight={600}
+                      minWidth={300}
+                      minHeight={400}
+                      maxWidth="100%"
+                      maxHeight={800}
+                      enable={{
+                        top: false,
+                        right: true,
+                        bottom: true,
+                        left: false,
+                        topRight: false,
+                        bottomRight: true,
+                        bottomLeft: false,
+                        topLeft: false,
+                      }}
+                      className="rounded-lg overflow-hidden bg-muted border-2 border-border"
+                    >
+                      {uploadedImage ? (
+                        <div className="relative w-full h-full">
+                          {/* Base Image */}
+                          <img
+                            src={uploadedImage}
+                            alt="Preview"
+                            className="w-full h-full object-cover"
+                            style={{
+                              filter: `brightness(${adjustments.brightness}%) contrast(${adjustments.contrast}%) saturate(${adjustments.saturation}%)`,
+                            }}
+                          />
+
+                          {/* Overlay Product */}
+                          {selectedProduct && (
+                            <div
+                              className="absolute"
+                              style={{
+                                left: `${adjustments.positionX}%`,
+                                top: `${adjustments.positionY}%`,
+                                transform: `translate(-50%, -50%) scale(${adjustments.scale / 100}) rotate(${adjustments.rotation}deg)`,
+                                opacity: 0.9,
+                              }}
+                            >
+                              <img
+                                src={selectedProduct.image}
+                                alt={selectedProduct.name}
+                                className="w-64 h-96 object-cover rounded-lg shadow-2xl"
+                              />
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <div className="flex items-center justify-center h-full text-muted-foreground">
+                          <p>Upload a photo to see preview</p>
+                        </div>
+                      )}
+                    </ResizableBox>
+                  </div>
+                </div>
+
                 {/* Adjustment Controls */}
                 {uploadedImage && selectedProduct && (
                   <div className="mt-8">
@@ -383,6 +443,29 @@ export default function VirtualTryOnPage() {
                     </Tabs>
                   </div>
                 )}
+                {/* Information Panel */}
+                <div className="mt-8 p-6 bg-muted rounded-lg">
+                  <h4 className="mb-3">How to use Virtual Try-On:</h4>
+                  <ul className="text-sm text-muted-foreground space-y-2">
+                    <li>
+                      1. Upload a full-body photo or use our demo model (best results with plain
+                      background)
+                    </li>
+                    <li>2. Select a product from the sidebar that you want to try on</li>
+                    <li>
+                      3. Adjust the position, size, and rotation to match your photo perfectly
+                    </li>
+                    <li>4. Fine-tune the appearance settings for the best visual match</li>
+                    <li>5. Save or share your virtual try-on result</li>
+                  </ul>
+                  <div className="mt-4 p-3 bg-accent/10 rounded-lg border border-accent/20">
+                    <p className="text-sm">
+                      <strong>Note:</strong> This is a basic overlay demonstration. For production,
+                      integrate with AI-powered virtual try-on APIs like [API: POST /virtual-try-on]
+                      for realistic results.
+                    </p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>
