@@ -68,11 +68,11 @@ export default function Header() {
                   </Link>
                 ))}
                 <hr className="my-4" />
-                <Link href="/pages/OutfitBuilderPage.tsx" className="text-lg hover:text-accent transition-colors flex items-center gap-2">
+                <Link href="/outfit-builder" className="text-lg hover:text-accent transition-colors flex items-center gap-2">
                   <Sparkles className="h-5 w-5" />
                   Outfit Builder
                 </Link>
-                <Link href="./pages/VirtualTryOnPage.tsx" className="text-lg hover:text-accent transition-colors flex items-center gap-2">
+                <Link href="/virtual-try-on" className="text-lg hover:text-accent transition-colors flex items-center gap-2">
                   <Sparkles className="h-5 w-5" />
                   Virtual Try-On
                 </Link>
@@ -132,7 +132,7 @@ export default function Header() {
             )}
 
             {/* Wishlist */}
-            <Link href="/pages/WishlistPage.tsx">
+            <Link href="/wishlist">
               <Button variant="ghost" size="icon" className="relative">
                 <Heart className="h-5 w-5" />
                 {wishlistCount > 0 && (
@@ -144,7 +144,7 @@ export default function Header() {
             </Link>
 
             {/* Cart */}
-            <Link href="/pages/CartPage.tsx">
+            <Link href="/cart">
               <Button variant="ghost" size="icon" className="relative">
                 <ShoppingCart className="h-5 w-5" />
                 {cartCount > 0 && (
@@ -156,7 +156,7 @@ export default function Header() {
             </Link>
 
             {/* User Account */}
-            <Link href={currentUser ? '/pages/AccountPage.tsx' : '/pages/LoginPage.tsx'}>
+            <Link href={currentUser ? '/' : '/pages/LoginPage.tsx'}>
               <Button variant="ghost" size="icon">
                 <User className="h-5 w-5" />
               </Button>

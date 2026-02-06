@@ -22,11 +22,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <Provider store={store}>
       <div className="min-h-screen flex flex-col">
         <Header />
-
+        <RegisterPage />
+        <LoginPage />
         <main className="flex-1">
-          <Component {...pageProps} />
-          <RegisterPage />
-          <LoginPage />
           <HomePage />
           <CategoryPage />
           <ProductDetailPage />
