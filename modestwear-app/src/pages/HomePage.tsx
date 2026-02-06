@@ -33,7 +33,7 @@ export default function HomePage() {
               Quality, comfort, and style in every piece.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link href="/category/all">
+              <Link href="/CategoryPage.tsx">
                 <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
                   Shop Now
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -163,7 +163,7 @@ export default function HomePage() {
       <section className="py-16 bg-gradient-to-r from-accent/20 to-accent/5">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Link href="/outfit-builder">
+            <Link href="/OutfitBuilderClient.tsx">
               <Card className="group overflow-hidden hover:shadow-lg transition-all duration-300 h-full">
                 <CardContent className="p-8 flex flex-col justify-center h-full">
                   <Sparkles className="h-12 w-12 text-accent mb-4" />
@@ -179,7 +179,7 @@ export default function HomePage() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/virtual-try-on">
+            <Link href="/VirtualTryOnPage.tsx">
               <Card className="group overflow-hidden hover:shadow-lg transition-all duration-300 h-full">
                 <CardContent className="p-8 flex flex-col justify-center h-full">
                   <Sparkles className="h-12 w-12 text-accent mb-4" />
@@ -213,7 +213,7 @@ export default function HomePage() {
               ))}
             </div>
             <div className="text-center mt-12">
-              <Link href="/category/sale">
+              <Link href="/CategoryPage.tsx">
                 <Button size="lg" className="bg-destructive hover:bg-destructive/90">
                   Shop All Sale Items
                   <ArrowRight className="ml-2 h-5 w-5" />

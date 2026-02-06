@@ -17,7 +17,8 @@ import { toast } from 'sonner';
 import ProductCard from '@/components/products/ProductCard';
 
 export default function ProductDetailPage() {
-  const { productId } = useParams();
+  const params = useParams();
+const productId = params?.productId as string | undefined;
   const router = useRouter();
   const dispatch = useDispatch();
 

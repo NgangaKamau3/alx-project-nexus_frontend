@@ -42,7 +42,7 @@ Many women struggle to find elegant, modest fashion online with easy filtering, 
 
 ## Special Features
 
-- Outfit Builder - Create custom outfit combinations
+- Outfit Builder - Create custom outfit combinations(Archived)
 - Virtual Try-On - Visualize products before purchase
 - Free shipping threshold
 

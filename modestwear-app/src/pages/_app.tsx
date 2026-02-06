@@ -7,6 +7,15 @@ import Footer from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/sonner";
 
 import "@/styles/globals.css";
+import CategoryPage from "./CategoryPage";
+import LoginPage from "./LoginPage";
+import RegisterPage from "./RegisterPage";
+import ProductDetailPage from "./ProductDetailPage";
+import CartPage from "./CartPage";
+import WishlistPage from "./WishlistPage";
+import VirtualTryOnPage from "./VirtualTryOnPage";
+import { Home } from "lucide-react";
+import HomePage from "./HomePage";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -16,6 +25,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
         <main className="flex-1">
           <Component {...pageProps} />
+          <RegisterPage />
+          <LoginPage />
+          <HomePage />
+          <CategoryPage />
+          <ProductDetailPage />
+          <CartPage />
+          <WishlistPage />
+          <VirtualTryOnPage />
         </main>
 
         <Footer />

@@ -14,7 +14,11 @@ import { SlidersHorizontal } from "lucide-react";
 
 export default function CategoryPage() {
   const params = useParams();
-  const categoryId = params.categoryId as string;
+
+const categoryId =
+  typeof params?.categoryId === "string"
+    ? params.categoryId
+    : null;
 
   const searchParams = useSearchParams();
 
@@ -26,9 +30,10 @@ export default function CategoryPage() {
   const [priceRange, setPriceRange] = useState<number[]>([0, 500]);
   const [sortBy, setSortBy] = useState("featured");
 
-  const category = categoryId
-  ? categories.find((c) => c.id === categoryId)
-  : null;
+  const category =
+  categoryId && categories
+    ? categories.find((c) => c.id === categoryId) ?? null
+    : null;
 
   // FILTER + SORTING LOGIC
   const filteredProducts = useMemo(() => {

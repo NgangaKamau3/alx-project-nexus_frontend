@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
 import { Search, ShoppingCart, Heart, User, Menu, X, Sparkles } from 'lucide-react';
+import LoginPage from '@/pages/LoginPage';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -42,7 +43,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-card border-b border-border">
       {/* Top Banner */}
       <div className="bg-primary text-primary-foreground py-2 px-4 text-center">
-        <p className="text-sm">Free shipping on orders over $100 | Use code: WELCOME20 for 20% off</p>
+        <p className="text-sm">Free shipping on orders over R500 | Use code: WELCOME20 for 20% off</p>
       </div>
 
       {/* Main Header */}
@@ -67,11 +68,11 @@ export default function Header() {
                   </Link>
                 ))}
                 <hr className="my-4" />
-                <Link href="/outfit-builder" className="text-lg hover:text-accent transition-colors flex items-center gap-2">
+                <Link href="/pages/OutfitBuilderPage.tsx" className="text-lg hover:text-accent transition-colors flex items-center gap-2">
                   <Sparkles className="h-5 w-5" />
                   Outfit Builder
                 </Link>
-                <Link href="/virtual-try-on" className="text-lg hover:text-accent transition-colors flex items-center gap-2">
+                <Link href="./pages/VirtualTryOnPage.tsx" className="text-lg hover:text-accent transition-colors flex items-center gap-2">
                   <Sparkles className="h-5 w-5" />
                   Virtual Try-On
                 </Link>
@@ -131,7 +132,7 @@ export default function Header() {
             )}
 
             {/* Wishlist */}
-            <Link href="/wishlist">
+            <Link href="/pages/WishlistPage.tsx">
               <Button variant="ghost" size="icon" className="relative">
                 <Heart className="h-5 w-5" />
                 {wishlistCount > 0 && (
@@ -143,7 +144,7 @@ export default function Header() {
             </Link>
 
             {/* Cart */}
-            <Link href="/cart">
+            <Link href="/pages/CartPage.tsx">
               <Button variant="ghost" size="icon" className="relative">
                 <ShoppingCart className="h-5 w-5" />
                 {cartCount > 0 && (
@@ -155,7 +156,7 @@ export default function Header() {
             </Link>
 
             {/* User Account */}
-            <Link href={currentUser ? '/account' : '/login'}>
+            <Link href={currentUser ? '/pages/AccountPage.tsx' : '/pages/LoginPage.tsx'}>
               <Button variant="ghost" size="icon">
                 <User className="h-5 w-5" />
               </Button>
@@ -187,11 +188,11 @@ export default function Header() {
       <div className="hidden lg:block border-t border-border">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-center space-x-8 text-sm">
-            <Link href="/outfit-builder" className="hover:text-accent transition-colors flex items-center gap-2">
+            <Link href="/pages/OutfitBuilderPage.tsx" className="hover:text-accent transition-colors flex items-center gap-2">
               <Sparkles className="h-4 w-4" />
               Outfit Builder
             </Link>
-            <Link href="/virtual-try-on" className="hover:text-accent transition-colors flex items-center gap-2">
+            <Link href="/pages/VirtualTryOnPage.tsx" className="hover:text-accent transition-colors flex items-center gap-2">
               <Sparkles className="h-4 w-4" />
               Virtual Try-On
             </Link>
