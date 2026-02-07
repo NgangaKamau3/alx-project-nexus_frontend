@@ -82,7 +82,7 @@ export default function Header() {
           </Sheet>
 
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/home" className="flex items-center space-x-2">
             <h1 className="text-2xl md:text-3xl">ModestWear</h1>
           </Link>
 

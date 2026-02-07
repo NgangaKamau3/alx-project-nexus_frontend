@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import { Products, categories, filters } from "@/data/data";
-import ProductCard from "@/components/layout/ProductCard";
+import ProductCard from "@/products/[productId]/ProductCard";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";

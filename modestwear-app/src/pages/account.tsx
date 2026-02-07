@@ -34,7 +34,7 @@ export default function Account() {
         <p className="text-muted-foreground mb-6">
           Access your account to view orders and more
         </p>
-        <Link href="/LoginPage">
+        <Link href="/login">
           <Button size="lg">Log In</Button>
         </Link>
       </div>
@@ -89,14 +89,14 @@ export default function Account() {
               </div>
 
               <nav className="space-y-2">
-                <Link href="/OutfitBuilderPage">
+                <Link href="/outfit-builder">
                   <Button variant="ghost" className="w-full justify-start">
                     <Sparkles className="h-4 w-4 mr-2" />
                     Outfit Builder
                   </Button>
                 </Link>
 
-                <Link href="/WishlistPage">
+                <Link href="/wishlist">
                   <Button variant="ghost" className="w-full justify-start">
                     <Heart className="h-4 w-4 mr-2" />
                     Wishlist ({wishlistItems.length})

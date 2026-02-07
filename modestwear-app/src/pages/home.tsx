@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, Sparkles, TrendingUp, Shield, Truck } from 'lucide-react';
 import { Products, categories } from '@/data/data';
-import ProductCard from '@/components/layout/ProductCard';
+import ProductCard from '@/products/[productId]/ProductCard';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -33,13 +33,13 @@ export default function Home() {
               Quality, comfort, and style in every piece.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link href="/CategoryPage">
+              <Link href="/category?filter='all'">
                 <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
                   Shop Now
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Link href="/category/sale">
+              <Link href="/category?filter='sale'">
                 <Button
                   size="lg"
                   variant="outline"
@@ -213,7 +213,7 @@ export default function Home() {
               ))}
             </div>
             <div className="text-center mt-12">
-              <Link href="/CategoryPage/sale">
+              <Link href="/category?filter='sale'">
                 <Button size="lg" className="bg-destructive hover:bg-destructive/90">
                   Shop All Sale Items
                   <ArrowRight className="ml-2 h-5 w-5" />

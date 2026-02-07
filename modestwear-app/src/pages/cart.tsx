@@ -296,14 +296,14 @@ export default function Cart() {
                 </div>
               )}
 
-              <Link href="/CheckoutPage">
+              <Link href="/checkout">
                 <Button className="w-full" size="lg">
                   Proceed to Checkout
                 </Button>
               </Link>
 
               <Link
-                href="/category/all"
+                href="/category"
                 className="block text-center text-sm text-accent mt-4 hover:underline"
               >
                 Continue Shopping

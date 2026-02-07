@@ -5,7 +5,7 @@ import { RootState } from "@/store/store";
 import { Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import ProductCard from "@/components/layout/ProductCard";
+import ProductCard from "@/products/[productId]/ProductCard";
 
 // [API: GET /wishlist] - Fetch wishlist
 
@@ -21,7 +21,7 @@ export default function Wishlist() {
           <p className="text-muted-foreground mb-6">
             Save your favorite items to your wishlist to view them here later.
           </p>
-          <Link href="/category/all">
+          <Link href="/category?filter='all'">
             <Button size="lg">Browse Products</Button>
           </Link>
         </div>

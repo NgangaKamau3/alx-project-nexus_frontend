@@ -34,12 +34,12 @@ export default function Footer() {
             <h4 className="mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/category" className="hover:text-accent transition-colors">
+                <Link href="/category?filter='all'" className="hover:text-accent transition-colors">
                   Shop All
                 </Link>
               </li>
               <li>
-                <Link href="/category" className="hover:text-accent transition-colors">
+                <Link href="/category?filter='sale'" className="hover:text-accent transition-colors">
                   Sale
                 </Link>
               </li>
