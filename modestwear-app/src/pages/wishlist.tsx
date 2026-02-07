@@ -5,11 +5,11 @@ import { RootState } from "@/store/store";
 import { Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import ProductCard from "@/products/ProductCard";
+import ProductCard from "@/components/layout/ProductCard";
 
 // [API: GET /wishlist] - Fetch wishlist
 
-export default function WishlistPage() {
+export default function Wishlist() {
   const wishlistItems = useSelector((state: RootState) => state.wishlist.items);
 
   if (wishlistItems.length === 0) {

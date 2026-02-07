@@ -18,7 +18,7 @@ import { promoCodes } from "@/data/data";
 // [API: DELETE /cart/:itemId]
 // [API: POST /promo-codes/validate]
 
-export default function CartPage() {
+export default function Cart() {
   const dispatch = useDispatch<AppDispatch>();
 
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -94,7 +94,7 @@ export default function CartPage() {
             Start shopping to add items to your cart
           </p>
 
-          <Link href="/category/all">
+          <Link href="/category">
             <Button size="lg">Browse Products</Button>
           </Link>
         </div>
@@ -296,7 +296,7 @@ export default function CartPage() {
                 </div>
               )}
 
-              <Link href="/checkout">
+              <Link href="/CheckoutPage">
                 <Button className="w-full" size="lg">
                   Proceed to Checkout
                 </Button>
@@ -309,11 +309,11 @@ export default function CartPage() {
                 Continue Shopping
               </Link>
 
-              {subtotal < 100 && (
+              {subtotal < 500 && (
                 <div className="mt-4 p-3 bg-accent/10 rounded-lg text-sm text-center">
                   Add{" "}
                   <span className="font-semibold">
-                    R{(100 - subtotal).toFixed(2)}
+                    R{(500 - subtotal).toFixed(2)}
                   </span>{" "}
                   more to get free shipping!
                 </div>

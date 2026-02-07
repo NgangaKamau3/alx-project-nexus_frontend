@@ -20,7 +20,7 @@ interface Product {
   price: number;
 }
 
-export default function VirtualTryOnPage() {
+export default function VirtualTryOn() {
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [adjustments, setAdjustments] = useState({
@@ -156,7 +156,7 @@ export default function VirtualTryOnPage() {
                           <p className="text-sm line-clamp-1 mb-1">
                             {product.name}
                           </p>
-                          <p className="text-sm text-accent">${product.price}</p>
+                          <p className="text-sm text-accent">R{product.price}</p>
                         </CardContent>
                       </Card>
                     ))}

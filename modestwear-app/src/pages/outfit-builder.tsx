@@ -1,4 +1,4 @@
-/*"use client";
+"use client";
 
 import { useState, useRef, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -106,7 +106,7 @@ function OutfitItem({ item, onRemove }: OutfitItemProps) {
 }
 
 //Main Page
-export default function OutfitBuilderPage() {
+export default function OutfitBuilder() {
   const dispatch = useDispatch();
   const currentOutfit = useSelector((state: RootState) => state.outfitBuilder.currentOutfit);
   const savedOutfits = useSelector((state: RootState) => state.outfitBuilder.savedOutfits);
@@ -202,7 +202,7 @@ export default function OutfitBuilderPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-            {/* Sidebar */}/*
+            {/* Sidebar */}
             <div className="lg:col-span-1">
               <Card>
                 <CardContent className="p-4">
@@ -224,7 +224,7 @@ export default function OutfitBuilderPage() {
               </Card>
             </div>
 
-            {/* Canvas */}/*
+            {/* Canvas */}
             <div className="lg:col-span-3">
               <Card>
                 <CardContent className="p-6">

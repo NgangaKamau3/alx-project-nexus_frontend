@@ -1,10 +1,11 @@
+"use client"
+
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
 import { Search, ShoppingCart, Heart, User, Menu, X, Sparkles } from 'lucide-react';
-import LoginPage from '@/pages/LoginPage';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -13,7 +14,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const route = useRouter();
+  const router = useRouter();
   
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const wishlistItems = useSelector((state: RootState) => state.wishlist.items);
@@ -25,18 +26,18 @@ export default function Header() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      route.push(`/category/all?search=${searchQuery}`);
+      router.push(`/category/all?search=${searchQuery}`);
       setIsSearchOpen(false);
       setSearchQuery('');
     }
   };
 
   const navigation = [
-    { name: 'New Arrivals', href: '/category/all?filter=new' },
-    { name: 'Dresses', href: '/category/dresses' },
-    { name: 'Abayas', href: '/category/abayas' },
-    { name: 'Sets', href: '/category/sets' },
-    { name: 'Sale', href: '/category/sale' },
+    { name: 'New Arrivals', href: '/category?filter=new' },
+    { name: 'Dresses', href: '/category?filter=dresses' },
+    { name: 'Abayas', href: '/category?filter=abayas' },
+    { name: 'Sets', href: '/category?filter=sets' },
+    { name: 'Sale', href: '/category?filter=sale' },
   ];
 
   return (
@@ -132,7 +133,7 @@ export default function Header() {
             )}
 
             {/* Wishlist */}
-            <Link href="/wishlist">
+            <Link href="/wishlist" >
               <Button variant="ghost" size="icon" className="relative">
                 <Heart className="h-5 w-5" />
                 {wishlistCount > 0 && (
@@ -144,7 +145,7 @@ export default function Header() {
             </Link>
 
             {/* Cart */}
-            <Link href="/cart">
+            <Link href="/cart" >
               <Button variant="ghost" size="icon" className="relative">
                 <ShoppingCart className="h-5 w-5" />
                 {cartCount > 0 && (
@@ -156,7 +157,7 @@ export default function Header() {
             </Link>
 
             {/* User Account */}
-            <Link href={currentUser ? '/' : '/pages/LoginPage.tsx'}>
+            <Link href={currentUser ? '/account' : '/login'}>
               <Button variant="ghost" size="icon">
                 <User className="h-5 w-5" />
               </Button>
@@ -188,11 +189,11 @@ export default function Header() {
       <div className="hidden lg:block border-t border-border">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-center space-x-8 text-sm">
-            <Link href="/pages/OutfitBuilderPage.tsx" className="hover:text-accent transition-colors flex items-center gap-2">
+            <Link href="/outfit-builder" className="hover:text-accent transition-colors flex items-center gap-2">
               <Sparkles className="h-4 w-4" />
               Outfit Builder
             </Link>
-            <Link href="/pages/VirtualTryOnPage.tsx" className="hover:text-accent transition-colors flex items-center gap-2">
+            <Link href="/virtual-try-on" className="hover:text-accent transition-colors flex items-center gap-2">
               <Sparkles className="h-4 w-4" />
               Virtual Try-On
             </Link>

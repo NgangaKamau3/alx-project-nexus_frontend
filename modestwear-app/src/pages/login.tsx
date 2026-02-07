@@ -14,7 +14,7 @@ import { toast } from 'sonner';
 
 // [API: POST /auth/login] - User login
 
-export default function LoginPage() {
+export default function Login() {
   const router = useRouter();
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
@@ -94,7 +94,7 @@ export default function LoginPage() {
 
           <div className="mt-6 text-center text-sm">
             <span className="text-muted-foreground">Don't have an account? </span>
-            <Link href="/user/RegisterPage" className="text-accent hover:underline">
+            <Link href="/register" className="text-accent hover:underline">
               Sign up
             </Link>
           </div>

@@ -19,7 +19,7 @@ import { toast } from "sonner";
 // [API: GET /addresses] - Get saved addresses
 // [API: PATCH /user] - Update profile
 
-export default function AccountPage() {
+export default function Account() {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
 
@@ -34,7 +34,7 @@ export default function AccountPage() {
         <p className="text-muted-foreground mb-6">
           Access your account to view orders and more
         </p>
-        <Link href="/login">
+        <Link href="/LoginPage">
           <Button size="lg">Log In</Button>
         </Link>
       </div>
@@ -89,14 +89,14 @@ export default function AccountPage() {
               </div>
 
               <nav className="space-y-2">
-                <Link href="/outfit-builder">
+                <Link href="/OutfitBuilderPage">
                   <Button variant="ghost" className="w-full justify-start">
                     <Sparkles className="h-4 w-4 mr-2" />
                     Outfit Builder
                   </Button>
                 </Link>
 
-                <Link href="/wishlist">
+                <Link href="/WishlistPage">
                   <Button variant="ghost" className="w-full justify-start">
                     <Heart className="h-4 w-4 mr-2" />
                     Wishlist ({wishlistItems.length})

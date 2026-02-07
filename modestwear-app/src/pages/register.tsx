@@ -15,7 +15,7 @@ import { toast } from 'sonner';
 
 // [API: POST /auth/register] - User registration
 
-export default function RegisterPage() {
+export default function Register() {
   const router = useRouter();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({

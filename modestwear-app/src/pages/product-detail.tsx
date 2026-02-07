@@ -14,9 +14,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Heart, ShoppingCart, Truck, RefreshCcw, Shield, Star, ChevronLeft } from 'lucide-react';
 import { toast } from 'sonner';
-import ProductCard from '@/products/ProductCard';
+import ProductCard from '@/components/layout/ProductCard';
 
-export default function ProductDetailPage() {
+export default function ProductDetail() {
   const params = useParams();
 const productId = params?.productId as string | undefined;
   const router = useRouter();
@@ -39,7 +39,7 @@ const productId = params?.productId as string | undefined;
     return (
       <div className="container mx-auto px-4 py-16 text-center">
         <h2 className="text-2xl mb-4">Product not found</h2>
-        <Button onClick={() => router.push('/')}>Return to Home</Button>
+        <Button onClick={() => router.push('/HomePage')}>Return to Home</Button>
       </div>
     );
   }
@@ -85,11 +85,11 @@ const productId = params?.productId as string | undefined;
       <div className="border-b border-border">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Link href="/" className="hover:text-accent">
+            <Link href="/_app" className="hover:text-accent">
               Home
             </Link>
             <span>/</span>
-            <Link href={`/category/${product.category}`} className="hover:text-accent capitalize">
+            <Link href={`/CategoryPage/${product.category}`} className="hover:text-accent capitalize">
               {product.category}
             </Link>
             <span>/</span>

@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Facebook, Instagram, Twitter, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -33,12 +34,12 @@ export default function Footer() {
             <h4 className="mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/category/all" className="hover:text-accent transition-colors">
+                <Link href="/category" className="hover:text-accent transition-colors">
                   Shop All
                 </Link>
               </li>
               <li>
-                <Link href="/category/sale" className="hover:text-accent transition-colors">
+                <Link href="/category" className="hover:text-accent transition-colors">
                   Sale
                 </Link>
               </li>

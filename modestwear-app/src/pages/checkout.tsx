@@ -17,7 +17,7 @@ import { toast } from 'sonner';
 // [API: POST /orders] - Create order
 // [API: POST /payments] - Process payment
 
-export default function CheckoutPage() {
+export default function Checkout() {
   const router = useRouter();
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -39,7 +39,7 @@ export default function CheckoutPage() {
   });
 
   const subtotal = cartItems.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
-  const shipping = subtotal > 100 ? 0 : 10;
+  const shipping = subtotal > 500 ? 0 : 10;
   const tax = subtotal * 0.08;
   const discount = (subtotal * promoDiscount) / 100;
   const total = subtotal + shipping + tax - discount;
@@ -57,7 +57,7 @@ export default function CheckoutPage() {
       toast.dismiss(toastId);
       toast.success("Order placed successfully!");
       dispatch(clearCart());
-      router.push('/account');
+      router.push('/AccountPage');
     }, 2000);
   };
 
@@ -70,7 +70,7 @@ export default function CheckoutPage() {
       <div className="container mx-auto px-4 py-16 text-center">
         <Package className="mx-auto h-16 w-16 text-muted-foreground mb-4" />
         <h2 className="mb-4">Your cart is empty</h2>
-        <Button onClick={() => router.push('/category/all')}>Continue Shopping</Button>
+        <Button onClick={() => router.push('/CategoryPage/all')}>Continue Shopping</Button>
       </div>
     );
   }

@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import { Products, categories, filters } from "@/data/data";
-import ProductCard from "@/products/ProductCard";
+import ProductCard from "@/components/layout/ProductCard";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
@@ -12,7 +12,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, } from "@/c
 import { Slider } from "@/components/ui/slider";
 import { SlidersHorizontal } from "lucide-react";
 
-export default function CategoryPage() {
+export default function Category() {
   const params = useParams();
 
 const categoryId =
@@ -162,7 +162,7 @@ const categoryId =
         <Slider
           value={priceRange}
           onValueChange={setPriceRange}
-          max={500}
+          max={1000}
           step={10}
           className="mb-4"
         />
