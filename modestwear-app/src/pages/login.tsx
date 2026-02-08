@@ -11,7 +11,10 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
 import { Lock, Mail } from 'lucide-react';
 import { toast } from 'sonner';
-import { authAPI } from '@/services/api';
+import { login } from '@/services/auth';
+
+// [API: POST /auth/login] - User login
+// [API: email || manual login] - Handle both email/password and social logins
 
 export default function Login() {
   const router = useRouter();
@@ -24,22 +27,28 @@ export default function Login() {
     e.preventDefault();
     setIsLoading(true);
 
+    // [API: POST /auth/login]
     try {
-      const response = await authAPI.login(email, password);
-      const user = {
-        id: response.user?.id || '1',
-        name: response.user?.username || response.user?.email || 'User',
+      const response = await login(email, password);
+      console.log('Login response:', response);
+    } catch (error) {
+      toast.error('Login failed');
+      setIsLoading(false);
+      return;
+    }
+
+    // Simulate API call
+    setTimeout(() => {
+      const User = {
+        id: '1',
+        name: 'Kayla Smith',
         email: email,
       };
-      dispatch(setUser(user));
-      localStorage.setItem('token', response.access);
+      dispatch(setUser(User));
       toast.success('Login successful!');
-      router.push('/account');
-    } catch (error: any) {
-      toast.error(error.message || 'Login failed');
-    } finally {
       setIsLoading(false);
-    }
+      router.push('/account');
+    }, 1000);
   };
 
   return (

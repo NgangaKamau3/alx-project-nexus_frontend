@@ -12,7 +12,10 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { User, Mail, Lock } from 'lucide-react';
 import { toast } from 'sonner';
-import { authAPI } from '@/services/api';
+import { login } from '@/services/auth';
+
+
+// [API: POST /auth/register] - User registration
 
 export default function Register() {
   const router = useRouter();
@@ -41,21 +44,19 @@ export default function Register() {
 
     setIsLoading(true);
 
-    try {
-      const response = await authAPI.register(formData.email, formData.password, formData.name);
+    // [API: POST /auth/register] #Will add the backend API when it is ready
+    // Simulate API call
+    setTimeout(() => {
       const newUser = {
-        id: response.user?.id || Date.now().toString(),
+        id: Date.now().toString(),
         name: formData.name,
         email: formData.email,
       };
       dispatch(setUser(newUser));
       toast.success('Account created successfully!');
-      router.push('/account');
-    } catch (error: any) {
-      toast.error(error.message || 'Registration failed');
-    } finally {
       setIsLoading(false);
-    }
+      router.push('/account');
+    }, 1000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
