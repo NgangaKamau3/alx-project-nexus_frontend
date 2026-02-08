@@ -34,7 +34,7 @@ export default function Header() {
   };
 
   const navigation = [
-    { name: 'New Arrivals', href: '/category/new' },
+    { name: 'New Arrivals', href: '/category?filter=new' },
     { name: 'Dresses', href: '/category/dresses' },
     { name: 'Abayas', href: '/category/abayas' },
     { name: 'Sets', href: '/category/sets' },
