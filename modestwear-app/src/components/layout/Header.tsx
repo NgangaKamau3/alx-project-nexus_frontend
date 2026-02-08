@@ -33,11 +33,11 @@ export default function Header() {
   };
 
   const navigation = [
-    { name: 'New Arrivals', href: '/category?filter=new' },
-    { name: 'Dresses', href: '/category?filter=dresses' },
-    { name: 'Abayas', href: '/category?filter=abayas' },
-    { name: 'Sets', href: '/category?filter=sets' },
-    { name: 'Sale', href: '/category?filter=sale' },
+    { name: 'New Arrivals', href: '/category/new' },
+    { name: 'Dresses', href: '/category/dresses' },
+    { name: 'Abayas', href: '/category/abayas' },
+    { name: 'Sets', href: '/category/sets' },
+    { name: 'Sale', href: '/category/sale' },
   ];
 
   return (
@@ -69,7 +69,7 @@ export default function Header() {
                   </Link>
                 ))}
                 <hr className="my-4" />
-                <Link href="/outfit-builder" className="text-lg hover:text-accent transition-colors flex items-center gap-2">
+                <Link href="/outfit-builder" onClick={() => toast.info('Feature coming soon')}className="text-lg hover:text-accent transition-colors flex items-center gap-2">
                   <Sparkles className="h-5 w-5" />
                   Outfit Builder
                 </Link>

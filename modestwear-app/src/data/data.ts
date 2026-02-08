@@ -29,10 +29,10 @@ export const Products: Product[] = [
     id: '2',
     name: 'Classic Abaya',
     price: 119.99,
-    image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=600',
+    image: 'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/077/original/WhatsApp_Image_2026-02-08_at_12.49.26.jpeg?1770548094?w=600',
     images: [
-      'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=600',
-      'https://images.unsplash.com/photo-1583391733990-20775e2e8d56?w=600',
+      'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/077/original/WhatsApp_Image_2026-02-08_at_12.49.26.jpeg?1770548094?w=600',
+      'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/077/original/WhatsApp_Image_2026-02-08_at_12.49.26.jpeg?1770548094?w=600',
     ],
     category: 'abayas',
     description: 'Traditional abaya with modern touches. Features delicate embroidery and premium fabric for all-day comfort. Perfect for formal and everyday wear.',
@@ -51,12 +51,12 @@ export const Products: Product[] = [
     price: 79.99,
     originalPrice: 99.99,
     discount: 20,
-    image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600',
+    image: 'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/079/original/WhatsApp_Image_2026-02-08_at_13.18.30.jpeg?1770549566?w=600',
     images: [
-      'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600',
+      'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/079/original/WhatsApp_Image_2026-02-08_at_13.18.30.jpeg?1770549566?w=600',
     ],
     category: 'sets',
-    description: 'Coordinated two-piece set with flowing palazzo pants and matching top. Perfect for work or casual outings.',
+    description: 'Coordinated two-piece set with pleated skirt and matching blazer. Perfect for work or casual outings.',
     fabric: '70% Viscose, 30% Linen',
     care: 'Machine wash gentle cycle',
     colors: ['Beige', 'Olive', 'Dusty Rose'],
@@ -67,14 +67,14 @@ export const Products: Product[] = [
   },
   {
     id: '4',
-    name: 'Modest Tunic Top',
+    name: 'Denim Dress',
     price: 49.99,
-    image: 'https://images.unsplash.com/photo-1564257577-338c92ccb10f?w=600',
+    image: 'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/080/original/WhatsApp_Image_2026-02-08_at_13.17.46.jpeg?1770549786?w=600',
     images: [
-      'https://images.unsplash.com/photo-1564257577-338c92ccb10f?w=600',
+      'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/080/original/WhatsApp_Image_2026-02-08_at_13.17.46.jpeg?1770549786?w=600',
     ],
-    category: 'tops',
-    description: 'Versatile tunic top with modest length and comfortable fit. Can be worn with pants or skirts.',
+    category: 'dresses',
+    description: 'Robust blue cuffed drop shoulder denim dress',
     fabric: '100% Cotton',
     care: 'Machine wash cold',
     colors: ['White', 'Cream', 'Black', 'Navy'],
@@ -89,9 +89,9 @@ export const Products: Product[] = [
     price:349.99,
     originalPrice: 499.99,
     discount: 30,
-    image: 'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/043/original/Diana_Dress.jpg?1770480162?w=600',
+    image: 'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/074/original/WhatsApp_Image_2026-02-08_at_12.30.41.jpeg?1770546776w=600',
     images: [
-      'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/043/original/Diana_Dress.jpg?1770480162?w=600',
+      'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/074/original/WhatsApp_Image_2026-02-08_at_12.30.41.jpeg?1770546776w=600',
     ],
     category: 'dresses',
     description: 'Beautiful and elegant silk Diana dress. Perfect for special occasions.',
@@ -108,16 +108,16 @@ export const Products: Product[] = [
   {
     id: '6',
     name: 'Premium Silk Abaya',
-    price: 199.99,
-    image: 'https://images.unsplash.com/photo-1583391733990-20775e2e8d56?w=600',
+    price: 399.99,
+    image: 'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/075/original/WhatsApp_Image_2026-02-08_at_12.37.37.jpeg?1770547393w=600',
     images: [
-      'https://images.unsplash.com/photo-1583391733990-20775e2e8d56?w=600',
+      'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/075/original/WhatsApp_Image_2026-02-08_at_12.37.37.jpeg?1770547393w=600',
     ],
     category: 'abayas',
     description: 'Luxurious silk abaya with elegant draping and sophisticated design. Perfect for formal occasions.',
     fabric: '100% Silk',
     care: 'Dry clean only',
-    colors: ['Black', 'Deep Purple', 'Forest Green'],
+    colors: ['Black', 'Deep Purple', 'Forest Green', 'Icy Blue'],
     sizes: ['S', 'M', 'L', 'XL'],
     inStock: false,
     rating: 4.9,
@@ -125,17 +125,17 @@ export const Products: Product[] = [
   },
   {
     id: '7',
-    name: 'Modest Palazzo Pants',
-    price: 54.99,
-    image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600',
+    name: 'Modest Batwing dress',
+    price: 354.99,
+    image: 'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/082/original/WhatsApp_Image_2026-02-08_at_13.28.10.jpeg?1770550141?w=600',
     images: [
-      'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600',
+      'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/082/original/WhatsApp_Image_2026-02-08_at_13.28.10.jpeg?1770550141?w=600',
     ],
-    category: 'bottoms',
-    description: 'Flowing palazzo pants with wide legs and comfortable elastic waistband. Perfect for casual and formal wear.',
-    fabric: '100% Rayon',
+    category: 'dresses',
+    description: 'Flowing batwing dress with wide sleeves and comfortable fit. Wrap front ripple satin maxi dress',
+    fabric: '100% Satin',
     care: 'Machine wash cold',
-    colors: ['Black', 'Navy', 'Beige', 'Olive'],
+    colors: ['Black', 'Navy', 'Beige', 'Olive Green'],
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
     inStock: true,
     rating: 4.3,
@@ -164,11 +164,11 @@ export const Products: Product[] = [
   },
   {
     id: '9',
-    name: 'Modest Cardigan',
-    price: 59.99,
-    image: 'https://images.unsplash.com/photo-1564257577-338c92ccb10f?w=600',
+    name: 'Mandarin Collar Dress',
+    price: 259.99,
+    image: 'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/081/original/WhatsApp_Image_2026-02-08_at_13.16.26.jpeg?1770549982?w=600',
     images: [
-      'https://images.unsplash.com/photo-1564257577-338c92ccb10f?w=600',
+      'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/081/original/WhatsApp_Image_2026-02-08_at_13.16.26.jpeg?1770549982?w=600',
     ],
     category: 'outerwear',
     description: 'Long modest cardigan perfect for layering. Features a relaxed fit and soft fabric.',
@@ -186,9 +186,9 @@ export const Products: Product[] = [
     price: 349.99,
     originalPrice: 499.99,
     discount: 25,
-    image: 'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/044/original/Silky_Satin_Dress.jpg?1770480175?w600',
+    image: 'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/076/original/WhatsApp_Image_2026-02-08_at_12.40.53.jpeg?1770547540w600',
     images: [
-      'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/044/original/Silky_Satin_Dress.jpg?1770480175?w=600',
+      'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/076/original/WhatsApp_Image_2026-02-08_at_12.40.53.jpeg?1770547540w600',
     ],
     category: 'dresses',
     description: 'Elegant evening dress with beautiful detailing. Perfect for weddings and formal events.',
@@ -204,17 +204,24 @@ export const Products: Product[] = [
   },
 ];
 
+export type Category = {
+  id: string;
+  name: string;
+  count: number;
+  image: string;
+}; 
+
 // Categories - [API: GET /categories]
 export const categories: Category[] = [
-  { id: 'all', name: 'All Products', count: Products.length },
-  { id: 'dresses', name: 'Dresses', count: Products.filter(p => p.category === 'dresses').length },
-  { id: 'abayas', name: 'Abayas', count: Products.filter(p => p.category === 'abayas').length },
-  { id: 'sets', name: 'Sets', count: Products.filter(p => p.category === 'sets').length },
-  { id: 'tops', name: 'Tops', count: Products.filter(p => p.category === 'tops').length },
-  { id: 'bottoms', name: 'Bottoms', count: Products.filter(p => p.category === 'bottoms').length },
-  { id: 'outerwear', name: 'Outerwear', count: Products.filter(p => p.category === 'outerwear').length },
-  { id: 'accessories', name: 'Accessories', count: Products.filter(p => p.category === 'accessories').length },
-  { id: 'sale', name: 'Sale', count: Products.filter(p => p.discount).length },
+  { id: 'all', name: 'All Products', count: Products.length,},
+  { id: 'dresses', name: 'Dresses', count: Products.filter(p => p.category === 'dresses').length, image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600' },
+  { id: 'abayas', name: 'Abayas', count: Products.filter(p => p.category === 'abayas').length, image: 'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/086/original/WhatsApp_Image_2026-02-08_at_12.36.28.jpeg?1770554646?w=600' },
+  { id: 'sets', name: 'Sets', count: Products.filter(p => p.category === 'sets').length, image: 'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/079/original/WhatsApp_Image_2026-02-08_at_13.18.30.jpeg?1770549566?w=600' },
+  { id: 'tops', name: 'Tops', count: Products.filter(p => p.category === 'tops').length, image: 'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/085/original/WhatsApp_Image_2026-02-08_at_14.39.49.jpeg?1770554424?w=600' },
+  { id: 'bottoms', name: 'Bottoms', count: Products.filter(p => p.category === 'bottoms').length, },
+  { id: 'outerwear', name: 'Outerwear', count: Products.filter(p => p.category === 'outerwear').length,},
+  { id: 'accessories', name: 'Accessories', count: Products.filter(p => p.category === 'accessories').length,},
+  { id: 'sale', name: 'Sale', count: Products.filter(p => p.discount).length,},
 ];
 
 // Filters - [API: GET /filters]
@@ -250,7 +257,7 @@ export const Orders: Order[] = [
       {
         productId: '3',
         productName: 'Two-Piece Modest Set',
-        productImage: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600',
+        productImage: 'https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/079/original/WhatsApp_Image_2026-02-08_at_13.18.30.jpeg?1770549566?w=600',
         quantity: 1,
         price: 79.99,
         color: 'Beige',

@@ -18,7 +18,7 @@ export default function Home() {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              'url(https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=1200)',
+              'url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/178/073/original/alyssa-strohmann-TS--uNw-JqE-unsplash.jpg?1770544446w=1200)',
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary/40" />
@@ -97,22 +97,24 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {categories.slice(1, 5).map((category) => (
-              <Link key={category.id} href={`/category/${category.id}`}>
-                <Card className="group overflow-hidden hover:shadow-lg transition-all duration-300">
-                  <div className="aspect-square overflow-hidden bg-muted">
-                    <img
-                      src={`https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400`}
-                      alt={category.name}
-                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <CardContent className="p-4 text-center">
-                    <h3 className="mb-1">{category.name}</h3>
-                    <p className="text-sm text-muted-foreground">{category.count} items</p>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
+             <Link key={category.id} href={`/category/${category.id}`}>
+             <Card className="group overflow-hidden hover:shadow-lg transition-all duration-300">
+            <div className="aspect-square overflow-hidden bg-muted">
+            <img
+             src={category.image}
+             alt={category.name}
+             className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+             />
+            </div>
+            <CardContent className="p-4 text-center">
+            <h3 className="mb-1">{category.name}</h3>
+            <p className="text-sm text-muted-foreground">
+            {category.count} items
+            </p>
+            </CardContent>
+            </Card>
+            </Link>
+           ))}
           </div>
         </div>
       </section>
