@@ -46,11 +46,12 @@ export default function Register() {
       const response = await authAPI.register(formData.email, formData.password, formData.name);
       const newUser = {
         id: response.user?.id || Date.now().toString(),
-        name: formData.name,
+        name: response.user?.first_name || formData.name,
         email: formData.email,
       };
       dispatch(setUser(newUser));
       localStorage.setItem('token', response.access);
+      localStorage.setItem('refreshToken', response.refresh);
       toast.success('Account created successfully!');
       router.push('/account');
     } catch (error: any) {

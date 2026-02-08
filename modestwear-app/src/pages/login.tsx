@@ -34,6 +34,7 @@ export default function Login() {
       };
       dispatch(setUser(user));
       localStorage.setItem('token', response.access);
+      localStorage.setItem('refreshToken', response.refresh);
       toast.success('Login successful!');
       router.push('/account');
     } catch (error: any) {
