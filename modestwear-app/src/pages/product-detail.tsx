@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter, useParams } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { Products, Reviews } from '@/data/data';
 import { addToCart } from '@/store/slices/cartSlice';
@@ -17,8 +17,8 @@ import { toast } from 'sonner';
 import ProductCard from '@/products/ProductCard';
 
 export default function ProductDetail() {
-const { productId } = useRouter().query;
   const router = useRouter();
+  const { productId } = useParams<{ productId: string }>();
   const dispatch = useDispatch();
 
   const product = Products.find((p) => p.id === productId);
@@ -27,7 +27,7 @@ const { productId } = useRouter().query;
     ? Reviews[productId] || []
     : [];
   const wishlistItems = useSelector((state: RootState) => state.wishlist.items);
-  const isInWishlist = wishlistItems.some((item) => item.id === productId);
+  const isInWishlist = product? wishlistItems.some((item) => item.id === product.id): false;
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedColor, setSelectedColor] = useState('');
@@ -66,7 +66,7 @@ const { productId } = useRouter().query;
 
   const handleWishlistToggle = () => {
     if (!product) return;
-    
+
     if (isInWishlist) {
       dispatch(removeFromWishlist(product.id));
       toast.success('Removed from wishlist');

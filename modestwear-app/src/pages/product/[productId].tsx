@@ -76,7 +76,7 @@ const handleAddToCart = () => {
 
   const handleWishlistToggle = () => {
     if (!product) return;
-    
+
     if (isInWishlist) {
       dispatch(removeFromWishlist(product.id));
       toast.success('Removed from wishlist');
