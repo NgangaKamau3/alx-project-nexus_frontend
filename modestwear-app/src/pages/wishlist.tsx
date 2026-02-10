@@ -1,11 +1,12 @@
 "use client";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import ProductCard from "@/products/ProductCard";
+
 // [API: GET /wishlist] - Fetch wishlist
 
 export default function Wishlist() {
@@ -20,7 +21,7 @@ export default function Wishlist() {
           <p className="text-muted-foreground mb-6">
             Save your favorite items to your wishlist to view them here later.
           </p>
-          <Link href="/category?filter='all'">
+          <Link href="/category">
             <Button size="lg">Browse Products</Button>
           </Link>
         </div>
@@ -34,6 +35,7 @@ export default function Wishlist() {
       <div className="mb-8">
         <h1 className="text-3xl font-semibold mb-2">My Wishlist</h1>
         <p className="text-muted-foreground">{wishlistItems.length} item{wishlistItems.length > 1 ? 's' : ''}</p>
+        
       </div>
 
       {/* Wishlist Grid */}
