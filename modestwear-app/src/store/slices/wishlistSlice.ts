@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface WishlistItem {
+interface Product {
   id: string;
   name: string;
   price: number;
@@ -8,7 +8,7 @@ interface WishlistItem {
 }
 
 interface WishlistState {
-  items: WishlistItem[];
+  items: Product[];
 }
 
 const initialState: WishlistState = {

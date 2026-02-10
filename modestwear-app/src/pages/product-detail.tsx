@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter, useParams } from 'next/navigation';
+import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Products, Reviews } from '@/data/data';
 import { addToCart } from '@/store/slices/cartSlice';
@@ -18,7 +18,7 @@ import ProductCard from '@/products/ProductCard';
 
 export default function ProductDetail() {
   const router = useRouter();
-  const { productId } = useParams<{ productId: string }>();
+  const { productId } = router.query;
   const dispatch = useDispatch();
 
   const product = Products.find((p) => p.id === productId);
